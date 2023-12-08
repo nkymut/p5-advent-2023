@@ -57,10 +57,10 @@ usetocbot: true
 p5.jsで生成したグラフィックを画面の外の物理的なモノに出力するというのは何者にも代えがたい魅力があります。これまでのAdventカレンダーを見ても、[印刷](https://note.com/senbaku/n/n63ad8c142275)、[レーザーカット](https://note.com/senbaku/n/n63ad8c142275)、[リソグラフ](https://kagikko.notion.site/kagikko/p5-a89a26fdfa4f4b35be1bcbf10cac8f70)、[刺繍]（https://note.com/yusukesasaki17/n/n249f7b7a4c77）等々といった多彩な応用例が見受けられます。
 
 p5に限らず最近のデジタル刺繍の分野では
-[印刷と刺繍を組み合わせたグラフィック表現](https://www.graphicsha.co.jp/detail.html?p=52033)であったり、刺繍データを意図的に破壊して”バグった”意匠を生み出す[グリッチ刺繍](https://nukeme.nu/tagged/Glitch%20Embroidery)などの興味深い例があります。布や糸の素材の選択で、デジタルデータに半立体の手触りや肌触りを与えることができるとても面白い表現手法です。
+[印刷と刺繍を組み合わせたグラフィック表現](https://www.graphicsha.co.jp/detail.html?p=52033)であったり、刺繍データを意図的に破壊して”バグった”意匠を生み出す[グリッチ刺繍](https://nukeme.nu/tagged/Glitch%20Embroidery)などの興味深い例があります。布や糸の素材の選択で、デジタルデータに半立体の手触りや肌触りを与えることができる、伝統と新しい技術が融合したとても面白い領域です。
 
 ![](./assets/design_no_hikidashi.jpg)
-
+*デザインのひきだし 50号表紙*
 
 一方で、デジタル刺繍を始める上での最大の障壁は、高価なデジタル刺繍ミシンへのアクセスだと思われます。
 ところが、[調べてみると](https://www.google.com/search?q=%E5%88%BA%E7%B9%8D%E3%83%9F%E3%82%B7%E3%83%B3+%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)意外に、各地のメイカースペースや手芸用品店などで、刺繍ミシンの時間貸しやレンタルをやっているところが多いのです。普段なかなか気づかない裁縫・手芸コミュニティの広がりを感じます。
@@ -74,6 +74,7 @@ p5に限らず最近のデジタル刺繍の分野では
 ## デジタル刺繍ミシンの構成
 
 ![](./assets/Innov-is%20NV880E_main.webp)
+*[Brother Innovis](https://www.brother.co.jp/product/hsm/embropc/vs/index.aspx)*
 
 一般的な家庭用デジタル刺繍マシンは、上の写真の用に
 ミシンの布送り部にXY軸で移動するステージが組み合わされており、布を針に対して上下左右に動かすことで刺繍を行う構成になっています。
@@ -153,7 +154,8 @@ index.htmlのヘッダに以下の行をに追加してライブラリを導入�
 
 ## SVGエンジンの指定
 
-p5.js-svgライブラリを導入できたら、createCanvasの描画エンジンにSVGを指定することで、SVGの描画ならびに出力が可能です。
+p5.js-svgライブラリを導入できたら、createCanvasのレンダラにSVGを指定することで、
+SVGの描画ならびに出力が可能です。
 
 ```jsx
 function setup(){
@@ -201,9 +203,7 @@ InkScapeの標準解像度が96dpiなのに対し、Adobe Illustratorの標準�
 
 以下に基本的なSVG出力用のp5.jsテンプレートを示します。
 
-https://editor.p5js.org/didny/sketches/EoPh1s5e_
-
-
+[https://editor.p5js.org/didny/sketches/EoPh1s5e_](https://editor.p5js.org/didny/sketches/EoPh1s5e_)
 ```jsx
 function setup(){
   // Set canvas size and rendering mode as SVG
@@ -232,13 +232,17 @@ function mmToPixel(mm, dpi = 96) {
 
 ```
 
+<iframe scrolling="no" class="p5livesample"  src="https://editor.p5js.org/didny/full/EoPh1s5e_"></iframe>
+
+
+
 ## SVG画像の刺繍データへの変換
 
 p5.jsからSVGファイルが出力できたら、
 Inkscapeで読み込み、Ink/Stitchで刺繍データを生成します。
 
 Ink/Stitchで出力できる刺繍パターンには大まかに、
-ストローク（並縫い）、サテンコラム（サテン縫い）、塗りつぶしがあります。
+ストローク（並縫い）、サテンカラム（サテン縫い）、塗りつぶしがあります。
 
 次のスケッチで違いを見てみましょう。
 https://editor.p5js.org/didny/sketches/x-iFKYowA
@@ -287,7 +291,7 @@ https://editor.p5js.org/didny/sketches/x-iFKYowA
 ランニングスティッチを指定すると、一定間隔で縫い、
 マニュアルスティッチを指定すると、パスの頂点vertex()で針の上げ下げを行うように指定できます。
 
-## サテンコラム（サテン縫い）
+## サテン（サテン縫い）
 
 ![](./assets/Inkscape_satin_J.png)
 
@@ -298,10 +302,10 @@ https://editor.p5js.org/didny/sketches/x-iFKYowA
 ![](https://inkstitch.org/assets/images/docs/stitch-type-satincolumn.jpg)
 
 Inkstich でサテン縫いのパラメーターを設定するためには、
-パスがサテンコラムという形式で結合されている必要があり、
+パスがサテンカラムという形式で結合されている必要があり、
 
 1. 並列するパスを選択する
-2. パスｰ>結合 または⌘K
+2. メニュー -> パス ｰ> 結合 または⌘K
 
 でパスを結合する必要があります。
 また結合の際に線や塗りの設定が失われてしまうので再度設定する必要があります。
@@ -323,54 +327,75 @@ Inkstich でサテン縫いのパラメーターを設定するためには、
 全てのオブジェクトに対して刺繍パラメータが設定できたら、
 刺繍データを出力します。
 
-エクステンションのメニューから出力するとおもいきや、
 ファイル -> 保存　メニューから拡張子を選択することで、
 指定した各社ミシンに対応した刺繍データを出力できます。
+エクステンションのメニューからのエクスポートではないので注意です。
 
 ![](./assets/Inkstitch_export.png)
 
-刺繍ミシンによりますが、多くのマシンで
+刺繍ミシンの機種によりますが、多くのマシンで
 ブラザーの.pes形式あるいはタジマの.dst形式がサポートされているようです。
-筆者の環境(BERNINA B590)では.dst形式が一番安定しているようです。
+筆者の環境(BERNINA B590)では.dst形式が一番読み込みが安定しています。
 
 出力したファイルをUSBディスクに移して刺繍ミシンにロードします。
 
+![](./assets/Inkstitch_import.jpg)
+
+
 ## 出力結果
 
-以下が出力結果です。
+ここでは[デジタル刺繍マシンの操作方法](https://www.youtube.com/watch?v=bnTv-Jbf46s&ab_channel=BrotherSupportSewing)には触れませんが、
 
-ストローク縫いに顕著ですが、
-刺繍の際に1.布がかなり引き連れて歪んだり、2.穴が集中して布が脆く破れたり
-するので、薄い布や伸び縮みする布に刺繍をする際には不織布などの裏地を当てることが必須です。
+刺繍の際に
+
+ 1.布が針とテーブルの動きに引き連れて歪んだり
+
+ 2.針穴が集中して布が破れたり
+
+するので、薄い布や伸び縮みする布には不織布などの裏地を当てることが必須です。
 
 初めての試し縫いには、生地の伸び縮みも少なく丈夫なフエルトをおすすめします。
 
+伸縮性が強く脆いTシャツやジャージの生地はなかなか上級者向けです。
 
+以下が出力結果です。
 ![](./assets/SVG_Circle_output.jpg)
 
+# 作例集
 
 ## 作例１：リサージュ刺繍
 
+せっかくコードで刺繍を描くのだから、
+ジェネラティブなことをやってみようという試みで単純なリサージュ図形を描いてみました。
+なだらかな変化なので刺繍ミシンにも急な移動で負荷がかからず縫いやすいです。
+蓄光糸を使って夜光させるとクールです。
+
 <iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/DtBhxE3s3"></iframe>
 
-
-
-
+![](./assets/lissajous.jpg){: width="400" }
+![](./assets/lissajous_plex2.jpg){: width="400" }
+![](./assets/lissajous_prix_grow.jpg){: width="400" }
 ## 作例２：フラクタルツリー刺繍
 
+せっかくコードで刺繍を描きマシンで刺すのだから、
+人手では途方もない時間が掛かりそうな複雑な図案ということでフラクタルなツリーを描いてみました。
+
+[こちらのスレッド](https://codegolf.stackexchange.com/questions/15860/make-a-scalable-christmas-tree)のKeith RandallさんのPythonコードを元にしています。
+
 <iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/TzsM7hcys"></iframe>
+
+![](./assets/fractal_xtree.jpg){: width="400" }
 
 ## まとめ
 
 本稿では、p5.js-svgとInk/Stitchを組み合わせることでデジタル刺繍データを作成する方法を紹介しました。
 
-本稿では触れませんでしたが、
-プログラミングによってデジタル刺繍データを生成する環境には、
-本家Processing用[PEmbroider](https://github.com/CreativeInquiry/PEmbroider)や
-Scratch的なブロックを組み合わせて刺繍生成プログラムを記述できる[turtlestitch](https://www.turtlestitch.org/)、そしてPythonライブラリである[pyembroidery](https://github.com/EmbroidePy/pyembroidery)などがあります。
-Inkstitchでの刺繍データ出力に慣れたらこれらを用いてより高度なジェネラティブ刺繍を出力するのも楽しみかもしれません。
+プログラミングによってデジタル刺繍データを生成する環境には、他にも
+本家Processing用[PEmbroider](https://github.com/CreativeInquiry/PEmbroider)や、
+Scratch的なコードブロックを組み合わせて刺繍生成プログラムを記述できる[turtlestitch](https://www.turtlestitch.org/)、そしてInk/Stitchのコアを構成するPythonライブラリである[pyembroidery](https://github.com/EmbroidePy/pyembroidery)などがあります。
+Ink/Stitchでの刺繍データ出力に慣れたら、これらを用いてより高度なジェネラティブ刺繍データを直接出力してみるのも楽しいかもしれません。
 
-また、JavaScriptでベクターグラフィックを描画する方法としては、他に[paper.js](https://paperjs.org/)や[maker.js](https://maker.js.org/)などがあります。しかしながら p5.js-svgは、p5.jsの描画関数をそのまま使えるという点でお手軽です。
+<!-- また、JavaScriptでベクターグラフィックを描画する方法としては、他に[paper.js](https://paperjs.org/)や[maker.js](https://maker.js.org/)などがあります。しかしながら p5.js-svgは、p5.jsの描画関数をそのまま使えるという点でお手軽です。 -->
 
 というわけで、よい年末をー
 
@@ -378,4 +403,5 @@ Inkstitchでの刺繍データ出力に慣れたらこれらを用いてより�
 ## References 
 
 - [p5.js-svg](https://github.com/zenozeng/p5.js-svg)
+- [Ink/Stitch](https://inkstitch.org/docs/stitch-library/)
 - [Working with SVGs in P5JS](https://www.gorillasun.de/blog/working-with-svgs-in-p5js/)
