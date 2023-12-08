@@ -33,6 +33,6 @@ incremental: true
 twitter:
   username: nkymuta
   card: summary_large_image
-  image: /assets/lissajous.jpg
-  summary_large_image: /assets/fractal_xtree.jpg
+  image: /assets/twitter_card01.png
+  summary_large_image: /assets/twitter_card02.png
   summary: p5.jsでデジタル刺繍
