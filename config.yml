@@ -9,18 +9,18 @@ ga_tracking: G-GX0HTR3LCT
 
 layout: page
 title: ""
-summary: この記事は、p5.jsからWebUSBやWebBluetooth経由でmicro:bitのボタンやセンサ入力のやり取りする方法を紹介します。
+summary: p5.jsでデジタル刺繍
 # logo: https://nkymut.github.io/p5-advent-2022/assets/p5js_microbit_logo.png
-image: /assets/p5js_microbit_logo.png
-summary_large_image: /assets/WebBle_lightsensor2.png
+# image: /assets/p5js_microbit_logo.png
+# summary_large_image: /assets/WebBle_lightsensor2.png
 date: 09/12/2022
 
 # Aux links for the upper right navigation
-aux_links:
-  "microbit-webueb-p5js on GitHub":
-    - "//github.com/nkymut/microbit-webusb-p5js"
-  "microbit-webble-p5js on GitHub":
-    - "//github.com/nkymut/microbit-webble-p5js"
+# aux_links:
+#   "microbit-webueb-p5js on GitHub":
+#     - "//github.com/nkymut/microbit-webusb-p5js"
+#   "microbit-webble-p5js on GitHub":
+#     - "//github.com/nkymut/microbit-webble-p5js"
 
 
 # Makes Aux links open in a new tab. Default is false
@@ -33,6 +33,6 @@ incremental: true
 twitter:
   username: nkymuta
   card: summary_large_image
-  image: /assets/p5js_microbit_logo.png
-  summary_large_image: /assets/WebBle_lightsensor2.png
-  summary: この記事は、p5.jsからWebUSBやWebBluetooth経由でmicro:bitのボタンやセンサ入力のやり取りする方法を紹介します。
+  # image: /assets/p5js_microbit_logo.png
+  # summary_large_image: /assets/WebBle_lightsensor2.png
+  summary: p5.jsでデジタル刺繍
