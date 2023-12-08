@@ -11,8 +11,8 @@ layout: page
 title: ""
 summary: p5.jsでデジタル刺繍
 # logo: https://nkymut.github.io/p5-advent-2022/assets/p5js_microbit_logo.png
-# image: /assets/p5js_microbit_logo.png
-# summary_large_image: /assets/WebBle_lightsensor2.png
+image: /assets/lissajous.jpg
+summary_large_image: /assets/fractal_tree.jpg
 date: 09/12/2022
 
 # Aux links for the upper right navigation
@@ -33,6 +33,6 @@ incremental: true
 twitter:
   username: nkymuta
   card: summary_large_image
-  # image: /assets/p5js_microbit_logo.png
-  # summary_large_image: /assets/WebBle_lightsensor2.png
+  image: /assets/lissajous.jpg
+  summary_large_image:  /assets/fractal_tree.jpg
   summary: p5.jsでデジタル刺繍

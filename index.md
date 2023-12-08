@@ -5,7 +5,7 @@ permalink: /index.html
 has_toc: true
 author: Yuta Nakayama
 summary: この記事では、p5.jsからSVGファイルを出力してInk/Stitch経由でデジタル刺繍をする方法を紹介します。
-image: /assets/WebBle_lightsensor2.png
+image: /assets/fractal_xtree.jpg
 date: 09/12/2023
 nav_order: 1
 has_toc: true # (on by default)
@@ -242,7 +242,7 @@ p5.jsからSVGファイルが出力できたら、
 Inkscapeで読み込み、Ink/Stitchで刺繍データを生成します。
 
 Ink/Stitchで出力できる刺繍パターンには大まかに、
-ストローク（並縫い）、サテンカラム（サテン縫い）、塗りつぶしがあります。
+ストローク（直線縫い縫い）、サテンカラム（サテン縫い）、塗りつぶしがあります。
 
 次のスケッチで違いを見てみましょう。
 https://editor.p5js.org/didny/sketches/x-iFKYowA
@@ -282,7 +282,7 @@ https://editor.p5js.org/didny/sketches/x-iFKYowA
 
 選択している図形のタイプによって自動的に、ストローク、サテン、塗りつぶしのパラメータータブが展開されます。
 
-## ストローク(並縫い)
+## ストローク(直線縫い)
 
 ![](./assets/Inkscape_running_J.png)
 
@@ -290,6 +290,8 @@ https://editor.p5js.org/didny/sketches/x-iFKYowA
 ストロークは、stroke()のパスに沿って縫います。
 ランニングスティッチを指定すると、一定間隔で縫い、
 マニュアルスティッチを指定すると、パスの頂点vertex()で針の上げ下げを行うように指定できます。
+
+指定可能なストロークの一覧は、[こちらのオフィシャルドキュメント](https://inkstitch.org/docs/stitch-library/)を参照してください。
 
 ## サテン（サテン縫い）
 
