@@ -31,7 +31,7 @@ usetocbot: true
   border: none;
 }
 
-.text-delta{
+#markdown-toc {
   margin-bottom: 1em;
 
   @include breakpoint($large) {
@@ -44,6 +44,7 @@ usetocbot: true
     padding-left: 1em;
     padding-top: 1em !important; /* added to make toc scroll with page */
     z-index: 10;
+  }
   }
 </style>
 
