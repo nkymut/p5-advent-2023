@@ -22,7 +22,8 @@ usetocbot: true
 }  
 .p5livesample{
   height: 430px;
-  width: 410px;
+  /* width: 410px; */
+  width: 100%;
   padding: 0px;
   margin: 0px;
   top: 0%;
@@ -31,21 +32,7 @@ usetocbot: true
   border: none;
 }
 
-#markdown-toc {
-  margin-bottom: 1em;
 
-  @include breakpoint($large) {
-    position: sticky !important; /* added to make toc scroll with page */
-    float: right !important; /* added to make toc scroll with page */
-    top: 0;
-    right: 0;
-    width: $right-sidebar-width-narrow;
-    margin-right: -1 * $right-sidebar-width-narrow;
-    padding-left: 1em;
-    padding-top: 1em !important; /* added to make toc scroll with page */
-    z-index: 10;
-  }
-  }
 </style>
 
 # p5.jsでデジタル刺繍
@@ -66,7 +53,7 @@ usetocbot: true
 
 ## 概要
 
-本稿では、p5.js を使ってデジタル刺繍をする方法について紹介します。具体的には、p5.js-svgライブラリを利用してスケッチをSVGとして出力し、さらにInkscapeのInk/Stitchアドオンによって刺繍データへと変換する方法とノウハウについて書きます。
+本稿では、p5.js を使ってデジタル刺繍をする方法について紹介します。具体的には、p5.js-svgライブラリを利用してスケッチをSVGとして出力し、さらにInkscapeのInk/Stitch拡張によって刺繍データへと変換する方法とノウハウについて書きます。
 
 ## はじめに
 
@@ -263,7 +250,7 @@ Ink/Stitchで出力できる刺繍パターンには大まかに、
 ストローク（直線縫い縫い）、サテンカラム（サテン縫い）、塗りつぶしがあります。
 
 次のスケッチで違いを見てみましょう。
-https://editor.p5js.org/didny/sketches/x-iFKYowA
+[https://editor.p5js.org/didny/sketches/x-iFKYowA](https://editor.p5js.org/didny/sketches/x-iFKYowA)
 
 ```jsx
   //Running Stitch
@@ -285,9 +272,8 @@ https://editor.p5js.org/didny/sketches/x-iFKYowA
   ellipse(340,height/2, 100,100);
 
 ```
-![](./codes/embroider/SVG_Circle.svg)
 
-<iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/x-iFKYowA"></iframe>
+<iframe scrolling="no"  class="p5livesample" src="https://editor.p5js.org/didny/full/x-iFKYowA"></iframe>
 
 まずは出力したSVGファイルをInkscapeで開きます。
 全体がグループ化されているのでグループ解除(オブジェクト-> グループ解除)のち、

@@ -10,10 +10,10 @@ ga_tracking: G-GX0HTR3LCT
 layout: page
 title: ""
 summary: p5.jsでデジタル刺繍
-# logo: https://nkymut.github.io/p5-advent-2022/assets/p5js_microbit_logo.png
+logo: https://nkymut.github.io/p5-advent-2023/assets/lissajous_plex2.jpg
 image: /assets/lissajous.jpg
 summary_large_image: /assets/fractal_tree.jpg
-date: 09/12/2022
+date: 09/12/2023
 
 # Aux links for the upper right navigation
 # aux_links:
