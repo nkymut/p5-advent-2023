@@ -54,27 +54,31 @@ usetocbot: true
 
 ## はじめに
 
-p5.jsで生成したグラフィックを画面の外の物理的なモノに出力するというのは何者にも代えがたい魅力があります。これまでのAdventカレンダーを見ても、[印刷](https://note.com/senbaku/n/n63ad8c142275)、[レーザーカット](https://note.com/senbaku/n/n63ad8c142275)、[リソグラフ](https://kagikko.notion.site/kagikko/p5-a89a26fdfa4f4b35be1bcbf10cac8f70)等々といった多彩な応用例が見受けられます。
+p5.jsで生成したグラフィックを画面の外の物理的なモノに出力するというのは何者にも代えがたい魅力があります。これまでのAdventカレンダーを見ても、[印刷](https://note.com/senbaku/n/n63ad8c142275)、[レーザーカット](https://note.com/senbaku/n/n63ad8c142275)、[リソグラフ](https://kagikko.notion.site/kagikko/p5-a89a26fdfa4f4b35be1bcbf10cac8f70)、[刺繍]（https://note.com/yusukesasaki17/n/n249f7b7a4c77）等々といった多彩な応用例が見受けられます。
 
-特にp5に限らず最近のデジタル刺繍の分野では
-[印刷と刺繍を組み合わせたグラフィック表現](https://www.graphicsha.co.jp/detail.html?p=52033)であったり、刺繍データを意図的に破壊して”バグった”意匠を生み出す[グリッチ刺繍](https://nukeme.nu/tagged/Glitch%20Embroidery)などの興味深い例があります。
+p5に限らず最近のデジタル刺繍の分野では
+[印刷と刺繍を組み合わせたグラフィック表現](https://www.graphicsha.co.jp/detail.html?p=52033)であったり、刺繍データを意図的に破壊して”バグった”意匠を生み出す[グリッチ刺繍](https://nukeme.nu/tagged/Glitch%20Embroidery)などの興味深い例があります。布や糸の素材の選択で、デジタルデータに半立体の手触りや肌触りを与えることができるとても面白い表現手法です。
 
 ![](./assets/design_no_hikidashi.jpg)
 
 
-しかしながら、デジタル刺繍を始める上での最大の障壁は、高価なデジタル刺繍ミシンへのアクセスが難しいことです。
+一方で、デジタル刺繍を始める上での最大の障壁は、高価なデジタル刺繍ミシンへのアクセスだと思われます。
+ところが、[調べてみると](https://www.google.com/search?q=%E5%88%BA%E7%B9%8D%E3%83%9F%E3%82%B7%E3%83%B3+%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)意外に、各地のメイカースペースや手芸用品店などで、刺繍ミシンの時間貸しやレンタルをやっているところが多いのです。普段なかなか気づかない裁縫・手芸コミュニティの広がりを感じます。
 
-ところが、[調べてみると](https://www.google.com/search?q=%E5%88%BA%E7%B9%8D%E3%83%9F%E3%82%B7%E3%83%B3+%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)意外に、都心に限らず各地のメイカースペースや手芸用品店などで、刺繍ミシンの時間貸しやレンタルをやっているところが多いのです。普段なかなか気づかない裁縫・手芸コミュニティの広がりを感じますね。
+本稿の手法を使えば、高価な刺繍データ作成ソフトウェアを買わずともジェネラティブ刺繍を作成できるので、どんどんやっていってほしいという願いです。
+
+ではやっていきましょう。
 
 <!-- とはいえ、著者は、ミシンを触るのが小学校の家庭科以来の非手芸的な人間なため、多々素人くさい間違いが入り込むと思いますがご了承ください。 -->
-
 
 ## デジタル刺繍ミシンの構成
 
 ![](./assets/Innov-is%20NV880E_main.webp)
 
 一般的な家庭用デジタル刺繍マシンは、上の写真の用に
-ミシンの布送り部にXY軸で移動するステージが組み合わされており、布を針に対して上下左右に動かすことで刺繍を行う構成になっています。刺繍データは、このXY軸の動きと針のZ軸の上げ下げを制御する命令セットで構成されています。基本的にはCNCマシン、ペンプロッタや、レーザーカッターを制御するG-Codeと同種のデータと言えます。
+ミシンの布送り部にXY軸で移動するステージが組み合わされており、布を針に対して上下左右に動かすことで刺繍を行う構成になっています。
+[刺繍データ](https://edutechwiki.unige.ch/en/Embroidery_format_PES)は、このXY軸の動きと針のZ軸の上げ下げを制御する命令セットで構成されています。
+基本的にはCNCマシン、ペンプロッタや、レーザーカッターを制御する[G-Code](https://reprap.org/wiki/G-code)と同種のデータと言えます。
 
 
 ## デジタル刺繍の制作手順
@@ -92,10 +96,12 @@ p5.js -> ベクターデータ(SVG) ->　Ink/Stitch　-> 刺繍データ
 というふうに、p5の描画プログラムからSVGとしてパスと塗りを出力し、
 刺繍ソフトウェアで改めて刺繍データへ変換するという流れになっています。
 
-p5の描画プログラムと刺繍ソフトウェアを分けることで、刺繍パラメーターの細かい調整をInkStitchの方に任せることができ、出力の際の布や使用する糸に合わせた微調整がやりやすくなるという利点があります。また、ベクターデータのパスを刺繍データの位置指定に直接変換することで
+p5の描画プログラムと刺繍ソフトウェアを分けることで、出力の際に
+使用する布や糸に合わせた刺繍パラメーターの微調整がやりやすくなるという利点があります。
+また、ベクターデータのパスを刺繍データの位置指定に直接変換することで
 画像ではできない、よりアグレッシブな刺繍の生成を行うことが可能です。
 
-ではやっていきましょう。
+
 
 <!-- ## デジタル刺繍ソフトウェア環境
 
@@ -113,7 +119,6 @@ p5の描画プログラムと刺繍ソフトウェアを分けることで、刺
 
 - Inkscape : [https://inkscape.org/release/](https://inkscape.org/release/)
 - Ink/Stitch : [https://inkstitch.org/docs/install/](https://inkstitch.org/docs/install/)
-)
 
 
 ## SVGモードの導入
@@ -260,7 +265,7 @@ https://editor.p5js.org/didny/sketches/x-iFKYowA
 ```
 ![](./codes/embroider/SVG_Circle.svg)
 
-<iframe src="https://editor.p5js.org/didny/full/x-iFKYowA"></iframe>
+<iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/x-iFKYowA"></iframe>
 
 まずは出力したSVGファイルをInkscapeで開きます。
 全体がグループ化されているのでグループ解除(オブジェクト-> グループ解除)のち、
@@ -346,14 +351,14 @@ Inkstich でサテン縫いのパラメーターを設定するためには、
 
 ## 作例１：リサージュ刺繍
 
-<iframe src="https://editor.p5js.org/didny/full/DtBhxE3s3"></iframe>
+<iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/DtBhxE3s3"></iframe>
 
 
 
 
 ## 作例２：フラクタルツリー刺繍
 
-<iframe src="https://editor.p5js.org/didny/full/TzsM7hcys"></iframe>
+<iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/TzsM7hcys"></iframe>
 
 ## まとめ
 
