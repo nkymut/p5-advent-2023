@@ -57,10 +57,10 @@ usetocbot: true
 
 ## はじめに
 
-p5.jsで生成したグラフィックを画面の外の物理的なモノに出力するというのは何者にも代えがたい魅力があります。これまでのAdventカレンダーを見ても、[印刷](https://note.com/senbaku/n/n63ad8c142275)、[レーザーカット](https://note.com/senbaku/n/n63ad8c142275)、[リソグラフ](https://kagikko.notion.site/kagikko/p5-a89a26fdfa4f4b35be1bcbf10cac8f70)、[手刺繍](https://note.com/yusukesasaki17/n/n249f7b7a4c77) 等々といった多彩な応用例が見受けられます。
+p5.jsで生成したグラフィックを画面の外の物理的なモノに出力するというのは何者にも代えがたい魅力があります。これまでのProcessing Adventカレンダーを見ても、[印刷](https://note.com/senbaku/n/n63ad8c142275)、[レーザーカット](https://note.com/senbaku/n/n63ad8c142275)、[リソグラフ](https://kagikko.notion.site/kagikko/p5-a89a26fdfa4f4b35be1bcbf10cac8f70)、[手刺繍](https://note.com/yusukesasaki17/n/n249f7b7a4c77) 等々といった多彩な応用例が見受けられます。
 
 
-デジタル刺繍は、布や糸の素材の選択により、デジタルデータに半立体の手触りや肌触りを与えることができ、伝統工芸と新しい技術が融合したとても面白い領域です。
+デジタル刺繍は、布や糸の素材の選択により、デジタルデータに半立体の手触りや肌触りを与えることができる伝統工芸と新しい技術が融合したとても面白い領域です。
 
 例えば[印刷と刺繍を組み合わせたグラフィック表現](https://www.graphicsha.co.jp/detail.html?p=52033)であったり、刺繍データを意図的に破壊して”バグった”意匠を生み出す[グリッチ刺繍](https://nukeme.nu/tagged/Glitch%20Embroidery)などの興味深い作品があります。
 
@@ -68,9 +68,9 @@ p5.jsで生成したグラフィックを画面の外の物理的なモノに出
 *[デザインのひきだし 50号表紙](https://www.japandesign.ne.jp/news/2023/10/73484/) 刺繍：[株式会社グレイスエンブ](http://grace-emb.co.jp/)*
 
 一方で、デジタル刺繍を始める上での最大の障壁は、高価なデジタル刺繍ミシンへのアクセスです。デジタル刺繍ミシンは、一般的な家庭用ミシンと比べても高価で、[BrotherのInnovis](https://www.brother.co.jp/product/hsm/embropc/vs/index.aspx)シリーズであれば、最安モデルで20万円以上、高機能モデルで50万円以上となっています。
-ところが、[調べてみると](https://www.google.com/search?q=%E5%88%BA%E7%B9%8D%E3%83%9F%E3%82%B7%E3%83%B3+%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)、意外に各地のメイカースペースや手芸用品店などで、刺繍ミシンの時間貸しやレンタルをやっているところが多いことがわかります。こうしたサービスを利用することで、大枚をはたいて自分の手元に刺繍ミシンを置かなくても、デジタル刺繍を楽しむことができます。
+ところが、[調べてみると](https://www.google.com/search?q=%E5%88%BA%E7%B9%8D%E3%83%9F%E3%82%B7%E3%83%B3+%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9)、意外に各地のメイカースペースや手芸用品店などで、刺繍ミシンの時間貸しやレンタルをやっているところが多いことがわかります。
 
-本稿の手法を使えば、高価な刺繍データ作成ソフトウェアを買わずともジェネラティブ刺繍を作成できるので、ぜひ挑戦してみてください。
+こうしたサービスと本稿で紹介した手法を利用すれば、高価な刺繍ミシンや刺繍データ作成ソフトウェアを購入することなく、デジタル刺繍を楽しむことができます。デジタル刺繍の制作に挑戦してみてはいかがでしょうか？
 
 ではやっていきましょう。
 
@@ -82,7 +82,7 @@ p5.jsで生成したグラフィックを画面の外の物理的なモノに出
 *[Brother Innovis](https://www.brother.co.jp/product/hsm/embropc/vs/index.aspx)*
 
 一般的な家庭用デジタル刺繍マシンは、上の写真の用に
-ミシンの布送り部にXY軸で移動するステージが組み合わされており、布を針に対して上下左右に動かすことで刺繍を行う構成になっています。
+ミシンの布送り部にXY軸で移動するステージを組み合わせて、布を針に対して上下左右に動かすことで刺繍を行う構成になっています。
 [刺繍データ](https://edutechwiki.unige.ch/en/Embroidery_format_PES)は、このXY軸の動きと針のZ軸の上げ下げを制御する命令セットで構成されています。
 デジタル刺繍データ作成ソフトウェアは、基本的にはCNCマシン、ペンプロッタや、レーザーカッターを制御する[G-Code](https://reprap.org/wiki/G-code)を生成するCAMソフトウェアと同じような役割を果たしています。
 
@@ -130,7 +130,8 @@ p5.js -> ベクターデータ(SVG) ->　Ink/Stitch　-> 刺繍データ
 ## SVGモードの導入
 
 
-次に、お好みのp5エディタにp5.js-svgライブラリを導入し、p5.jsでSVGの出力を可能にする環境を構築します。
+次に、お好みのp5エディタにp5.js-svgライブラリを導入し、
+p5.jsでSVGの出力を可能にする環境を構築します。
 
   - p5.js-svg [https://github.com/zenozeng/p5.js-svg](https://github.com/zenozeng/p5.js-svg)
 
@@ -228,7 +229,7 @@ function setup(){
 
 function mmToPixel(mm, dpi = 96) {
   // const adobeDPI = 72;
-  // let dpi = adobeDPI;
+  // dpi = adobeDPI;
   let inch = mm / 25.4;
   let px = inch * dpi;
 
@@ -291,9 +292,9 @@ Ink/Stitchで出力できる刺繍パターンには大まかに、
 ![](./assets/Inkscape_running_J.png)
 
 
-ストロークは、stroke()のパスに沿って縫います。
+ストロークは、stroke()で指定したパスに沿って縫います。
 ランニングスティッチを指定すると、一定間隔で縫い、
-マニュアルスティッチを指定すると、パスの頂点vertex()で針の上げ下げを行うように指定できます。
+マニュアルスティッチを指定すると、パスの頂点で針の上げ下げを行うように指定できます。
 
 指定可能なストロークの一覧は、[こちらのオフィシャルドキュメント](https://inkstitch.org/docs/stitch-library/)を参照してください。
 
@@ -301,17 +302,17 @@ Ink/Stitchで出力できる刺繍パターンには大まかに、
 
 ![](./assets/Inkscape_satin_J.png)
 
-
 サテン縫いは、並列する2つのパスの間をジグザクに刺繍することで
-艶のある刺繍の、野球帽のロゴの感じと言えば伝わりやすいでしょうか？
+刺繍糸の艶を生かした刺繍を生み出すことができます。
+野球帽のロゴの感じと言えば伝わりやすいでしょうか？
 
 ![](https://inkstitch.org/assets/images/docs/stitch-type-satincolumn.jpg)
 
-Inkstich でサテン縫いのパラメーターを設定するためには、
+Ink/Stitch でサテン縫いのパラメーターを設定するためには、
 パスがサテンカラムという形式で結合されている必要があり、
 
 1. 並列するパスを選択する
-2. メニュー -> パス ｰ> 結合 または⌘K
+2. メニュー -> パス ｰ> 結合 または⌘+K
 
 でパスを結合する必要があります。
 また結合の際に線や塗りの設定が失われてしまうので再度設定する必要があります。
@@ -350,11 +351,11 @@ Inkstich でサテン縫いのパラメーターを設定するためには、
 
 ## 出力結果
 
-ここでは[デジタル刺繍マシンの操作方法](https://www.youtube.com/watch?v=bnTv-Jbf46s&ab_channel=BrotherSupportSewing)には触れませんが、
+ここでは[デジタル刺繍マシンの操作方法](https://www.youtube.com/watch?v=bnTv-Jbf46s&ab_channel=BrotherSupportSewing)の詳細には触れませんが、
 
 刺繍の際に
 
- 1.布が針とテーブルの動きに引き連れて歪んだり
+ 1.布が針とテーブルの動きに引きつられて歪んだり
 
  2.針穴が集中して布が破れたり
 
@@ -362,7 +363,7 @@ Inkstich でサテン縫いのパラメーターを設定するためには、
 
 初めての試し縫いには、生地の伸び縮みも少なく丈夫なフエルトをおすすめします。
 
-伸縮性が強く脆いTシャツやジャージの生地はなかなか上級者向けです。
+伸縮性が強くて脆く穴の空きやすいTシャツやジャージの生地はなかなか上級者向けです。
 
 以下が出力結果です。
 ![](./assets/SVG_Circle_output.jpg)
@@ -387,8 +388,12 @@ Inkstich でサテン縫いのパラメーターを設定するためには、
 
 せっかくコードで刺繍を描きマシンで刺すのだから、
 人手では途方もない時間が掛かりそうな複雑な図案をということでフラクタルなツリーを描いてみました。
-
 [こちらのスレッド](https://codegolf.stackexchange.com/questions/15860/make-a-scalable-christmas-tree)のKeith RandallさんのPythonコードを元にしています。
+
+直線縫いのマニュアルスティッチ指定でベクターデータの頂点データを刺繍データの位置指定に直接変換することで
+刺繍糸を3Dプリンタのフィラメントに取って代えたような、より立体的でアグレッシブな刺繍の生成を行うことが可能です。
+
+
 
 <iframe scrolling="no" class="p5livesample" src="https://editor.p5js.org/didny/full/TzsM7hcys"></iframe>
 
