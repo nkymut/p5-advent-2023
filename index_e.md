@@ -91,13 +91,9 @@ Let's get started!
 
 ## Structure of a Digital Embroidery Machine
 
-![](./assets/Innov-is%20NV880E_main.webp)
-*[Brother Innovis](https://www.brother.co.jp/product/hsm/embropc/vs/index.aspx)*
+![](./assets/bernina_590_sm-2048x1249-1085084366.jpg)
+*[BERNINA B590](https://www.bernina.com/en-US/Machines-US/Series-Overview/NEW-BERNINA-5-Series/BERNINA-590)*
 
-一般的な家庭用デジタル刺繍マシンは、上の写真の用に
-ミシンの布送り部にXY軸で移動するステージを組み合わせて、布を針に対して上下左右に動かすことで刺繍を行う構成になっています。
-[刺繍データ](https://edutechwiki.unige.ch/en/Embroidery_format_PES)は、このXY軸の動きと針のZ軸の上げ下げを制御する命令セットで構成されています。
-デジタル刺繍データ作成ソフトウェアは、基本的にはCNCマシン、ペンプロッタや、レーザーカッターを制御する[G-Code](https://reprap.org/wiki/G-code)を生成するCAMソフトウェアと同じような役割を果たしています。
 
 A typical household digital embroidery machine, as shown in the above photo, is configured to perform embroidery by combining a stage that moves in the XY axis with the fabric feeding part of the sewing machine, moving the fabric up, down, left, and right relative to the needle. [Embroidery data](https://edutechwiki.unige.ch/en/Embroidery_format_PES) is composed of a set of instructions that control this XY axis movement and the up and down movement of the needle in the Z axis. Digital embroidery data creation software essentially plays the same role as CAM software that generates [G-Code](https://reprap.org/wiki/G-code) to control CNC machines, pen plotters, and laser cutters.
 
@@ -373,7 +369,7 @@ By directly converting the vertex data of the vector data into the position spec
 
 In this article, we introduced a method to create digital embroidery data by combining p5.js-svg and Ink/Stitch.
 
-There are other environments for generating digital embroidery data through programming, such as [PEmbroider](https://github.com/CreativeInquiry/PEmbroider) for the original Processing, [turtlestitch](https://www.turtlestitch.org/)which allows you to write embroidery generation programs by combining Scratch-like code blocks, and [pyembroidery](https://github.com/EmbroidePy/pyembroidery), a Python library that forms the core of Ink/Stitch. Once you get used to outputting embroidery data with Ink/Stitch, it might be fun to try directly outputting more advanced generative embroidery data using these.
+There are other environments for generating digital embroidery data through programming, such as [PEmbroider](https://github.com/CreativeInquiry/PEmbroider) for the original Processing, [turtlestitch](https://www.turtlestitch.org/) which allows you to write embroidery generation programs by combining Scratch-like code blocks, and [pyembroidery](https://github.com/EmbroidePy/pyembroidery), a Python library that forms the core of Ink/Stitch. Once you get used to outputting embroidery data with Ink/Stitch, it might be fun to try directly outputting more advanced generative embroidery data using these.
 
 <!-- また、JavaScriptでベクターグラフィックを描画する方法としては、他に[paper.js](https://paperjs.org/)や[maker.js](https://maker.js.org/)などがあります。しかしながら p5.js-svgは、p5.jsの描画関数をそのまま使えるという点でお手軽です。 -->
 
