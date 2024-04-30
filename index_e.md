@@ -280,7 +280,7 @@ Strokes are sewn along the path specified by stroke(). If you specify a running 
 
 For a list of possible strokes, please refer to this [official document](https://inkstitch.org/docs/stitch-library/).
 
-## サテン（サテン縫い）
+## Satin Column（Satin Stitching）
 
 ![](./assets/Inkscape_satin_J.png)
 
@@ -297,11 +297,11 @@ You need to combine the paths. Also, when combining, the line and fill settings 
 For more details, please refer to this [official document](https://inkstitch.org/docs/stitches/satin-column/).
 
 
-## FILL
+## FILL stitch
 
 ![](./assets/Inkscape_fill_J.png)
 
-Fill will sew over the surface in the color specified by fill(). In embroidery data, color management is done on a thread-by-thread basis, so the data is output with the thread divided for each color specified by fill() or stroke(). It seems that you can create various textures by specifying the fill algorithm.
+Fill stitch will sew over the surface in the color specified by fill(). In embroidery data, color management is done on a thread-by-thread basis, so the data is output with the thread divided for each color specified by fill() or stroke(). It seems that you can create various textures by specifying the fill algorithm.
 
 For more details, please refer to this official document.
 
