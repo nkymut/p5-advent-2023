@@ -10,10 +10,13 @@ ga_tracking: G-GX0HTR3LCT
 layout: page
 title: ""
 summary: p5.jsでデジタル刺繍
-logo: /assets/twitter_card01.png
+# logo: /assets/twitter_card01.png
 image: /assets/lissajous.jpg
 summary_large_image: /assets/twitter_card02.png
 date: 09/12/2023
+
+languages: ["en", "ja"]
+default_lang: "ja"
 
 # Aux links for the upper right navigation
 # aux_links:

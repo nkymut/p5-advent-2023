@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Digital Embroidery with p5.js
-permalink: /index.html
+permalink: /en/
 has_toc: true
 author: Yuta Nakayama
 summary: This article introduces the method of creating digital embroidery via Ink/Stitch by exporting SVG files from p5.js.
@@ -95,15 +95,14 @@ Let's get started!
 *[BERNINA B590](https://www.bernina.com/en-US/Machines-US/Series-Overview/NEW-BERNINA-5-Series/BERNINA-590)*
 
 
-A typical household digital embroidery machine, as shown in the above photo, is configured to perform embroidery by combining a stage that moves in the XY axis with the fabric feeding part of the sewing machine, moving the fabric up, down, left, and right relative to the needle. [Embroidery data](https://edutechwiki.unige.ch/en/Embroidery_format_PES) is composed of a set of instructions that control this XY axis movement and the up and down movement of the needle in the Z axis. Digital embroidery data creation software essentially plays the same role as CAM software that generates [G-Code](https://reprap.org/wiki/G-code) to control CNC machines, pen plotters, and laser cutters.
+A common household digital embroidery machine, as shown in the above photo, is configured to perform embroidery by combining a stage that moves in the XY axis with the fabric feeding part of the sewing machine, moving the fabric up, down, left, and right relative to the needle. [Embroidery data](https://edutechwiki.unige.ch/en/Embroidery_format_PES) is composed of a set of instructions that control this XY axis movement and the up and down movement of the needle in the Z axis. Digital embroidery data creation software essentially plays the same role as CAM software that generates [G-Code](https://reprap.org/wiki/G-code) to control CNC machines, pen plotters, and laser cutters.
 
 ## Digital Embroidery Production Process
 
-Typical embroidery data creation software follows this flow:
+With typical embroidery data creation process using embroidery software, you specify the vector path manually from the image data, then specify various settings for the embroidery pattern from that path, and finally output the embroidery data.
 
 Image Data -> Embroidery Data Creation Software -> Embroidery Data
 
-On the graphical interface of the embroidery software, you specify the vector path manually from the image data, specify the thread color and embroidery pattern from that path, and finally output the embroidery data.
 
 In contrast, this article combines p5.js and Ink/Stitch to create a flow like this:
 
